@@ -1,0 +1,88 @@
+{% extends 'VehicleDetails.html' %}
+
+{% block form %}
+<div class="card" style="width: 60%; margin:auto;padding:20px;">
+    <form action="http://localhost:5000/y_predict" method="post">
+
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Registration Month And Year</label>
+                <input class="form-control" type="month" min="1950" max="2022" value="2020-11" step="1" name="regyear" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Power</label>
+              <input type="number" min="50" max="1000" step="0.1" class="form-control" id="" placeholder="Enter" name="powerps" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Kilometers</label>
+              <input type="number" step="0.1" class="form-control" id="" placeholder="Kilometers" name="kms" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Gearbox</label>
+              <select class="form-control" id="" name="gearbox" required>
+                <option value="automatic">Automatic</option>
+                <option value="manual">Manual</option>
+              </select>
+            </div>
+            <div class="damage-radio" >
+              <label for="">Damage</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="damage" id="">
+              <label class="form-check-label" for="flexRadioDefault1" style="margin-right: 25px;">
+                Yes
+              </label>
+            
+              <input class="form-check-input" type="radio" name="damage" id="" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                No
+              </label>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Model</label>
+              <select class="form-control" id="" name="model" required>
+                  <option value="">Select Your Model</option>
+                {% for x in models -%}
+                  <option value="{{ x }}">{{ x }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Brand</label>
+              <select class="form-control" id="" name="brand" required>
+                  <option value="">Select Your Brand</option>
+                {% for x in brands -%}
+                  <option value="{{ x }}">{{ x }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Fuel type</label>
+              <select class="form-control" id="" name="fuel" required>
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+                <option value="electric">Electric</option>
+                <option value="cng">CNG</option>
+                  <option value="lpg">LPG</option>
+                  <option value="hybrid">Hybrid</option>
+                  <option value="others">Others</option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Vehicle Type</label>
+              <select class="form-control" id="" name="vehicle" required>
+                <option value="bus">Bus</option>
+                <option value="combination">Combination</option>
+                <option value="convertible">Convertible</option>
+                <option value="coupe">Coupe</option>
+                <option value="small car">Small car</option>
+                <option value="suv">SUV</option>
+                <option value="limousine">Limousine</option>
+                <option value="others">Others</option>
+
+              </select>
+            </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+{% endblock %}
